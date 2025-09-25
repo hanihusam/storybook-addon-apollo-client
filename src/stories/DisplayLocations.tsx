@@ -1,7 +1,17 @@
 import React from "react";
-import { useQuery, gql } from "@apollo/client";
+import { gql, type TypedDocumentNode } from "@apollo/client";
+import { useQuery } from "@apollo/client/react";
 
-export const GET_LOCATIONS_QUERY = gql`
+type LocationsQuery = {
+  locations: Array<{
+    id: string;
+    name: string;
+    description: string;
+    photo: string;
+  }>;
+};
+
+export const GET_LOCATIONS_QUERY: TypedDocumentNode<LocationsQuery> = gql`
   query GetLocations {
     locations {
       id
@@ -18,7 +28,7 @@ export function DisplayLocations() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
 
-  return data.locations.map(({ id, name, description, photo }: any) => (
+  return data?.locations.map(({ id, name, description, photo }: any) => (
     <div key={id}>
       <h3>{name}</h3>
       <img width="400" height="250" alt="location-reference" src={`${photo}`} />

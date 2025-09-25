@@ -1,7 +1,23 @@
 import React from "react";
-import { useQuery, gql } from "@apollo/client";
+import { gql, type TypedDocumentNode } from "@apollo/client";
+import { useQuery } from "@apollo/client/react";
 
-export const GET_LOCATION_QUERY = gql`
+type LocationsQuery = {
+  location: {
+    id: string;
+    name: string;
+    description: string;
+    photo: string;
+  };
+};
+type LocationQueryVariables = {
+  locationId: number;
+};
+
+export const GET_LOCATION_QUERY: TypedDocumentNode<
+  LocationsQuery,
+  LocationQueryVariables
+> = gql`
   query GetLocation($locationId: Int!) {
     location(id: $locationId) {
       id
