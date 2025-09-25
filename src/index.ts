@@ -1,9 +1,9 @@
-import { ApolloClientParameters } from './types';
+import { ApolloClientParameters } from "./types";
 
-export { PARAM_KEY } from './constants';
-export * from './preview';
+export { PARAM_KEY } from "./constants";
+export * from "./preview";
 
-declare module 'storybook/internal/csf' {
+declare module "storybook/internal/csf" {
   interface Parameters {
     apolloClient?: ApolloClientParameters;
   }

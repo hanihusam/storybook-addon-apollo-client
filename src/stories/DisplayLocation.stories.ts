@@ -1,9 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { DisplayLocation, GET_LOCATION_QUERY } from "./DisplayLocation";
-import { ApolloError } from "@apollo/client";
+import { GraphQLError } from "graphql";
 import { expect, fn, within } from "storybook/test";
-import { MockedResponse } from "@apollo/client/testing";
 
 const meta: Meta<typeof DisplayLocation> = {
   title: "Example/DisplayLocation",
@@ -85,7 +84,7 @@ export const WithError: Story = {
               locationId: 1,
             },
           },
-          error: new ApolloError({ errorMessage: "Could not get location" }),
+          error: new GraphQLError("Could not get location"),
         },
       ],
     },
