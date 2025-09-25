@@ -1,5 +1,4 @@
 import React from "react";
-import type { MockedResponse } from "@apollo/client/testing";
 import type { OperationDefinitionNode } from "graphql";
 
 import { AddonPanel, Form } from "storybook/internal/components";
@@ -9,9 +8,9 @@ import { Addon_RenderOptions } from "storybook/internal/types";
 
 import { PanelContent } from "./components/PanelContent";
 import { ADDON_ID, EVENTS } from "./constants";
-import { ApolloClientAddonState } from "./types";
+import { ApolloClientAddonState, ExtendedMockedResponse } from "./types";
 
-const getMockName = (mockedResponse: MockedResponse): string => {
+const getMockName = (mockedResponse: ExtendedMockedResponse): string => {
   if (mockedResponse.request.operationName) {
     return mockedResponse.request.operationName;
   }
