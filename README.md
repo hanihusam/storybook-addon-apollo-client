@@ -57,7 +57,8 @@ export default {
 **preview.ts**
 
 ```js
-import { MockedProvider } from "@apollo/client/testing"; // Use for Apollo Version 3+
+import { MockedProvider } from "@apollo/client/testing/react"; // Use for Apollo Version 4+
+// import { MockedProvider } from "@apollo/client/testing"; // Use for Apollo Version 3+
 // import { MockedProvider } from "@apollo/react-testing"; // Use for Apollo Version < 3
 
 export const preview = {
@@ -212,7 +213,7 @@ Example.parameters = {
         request: {
           query: DashboardPageQuery,
         },
-        error: new ApolloError("This is a mock network error"),
+        error: new Error("This is a mock network error"),
       },
     ],
   },
