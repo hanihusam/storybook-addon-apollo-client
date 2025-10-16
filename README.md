@@ -193,9 +193,11 @@ Example.parameters = {
 };
 ```
 
-## Error State
+## Error States
 
-You can use the `error` parameter to create error state.
+Based on [Apollo Client's Testing Error States](https://www.apollographql.com/docs/react/development-testing/testing#testing-error-states) you can simulate both network errors and GraphQL errors.
+
+### Network Errors
 
 ```js
 import DashboardPage, { DashboardPageQuery } from ".";
@@ -214,6 +216,32 @@ Example.parameters = {
           query: DashboardPageQuery,
         },
         error: new Error("This is a mock network error"),
+      },
+    ],
+  },
+};
+```
+
+### GraphQL errors
+
+```js
+import DashboardPage, { DashboardPageQuery } from ".";
+import { GraphQLError } from 'graphql'
+
+export default {
+  title: "My Story",
+};
+
+export const Example = () => <DashboardPage />;
+
+Example.parameters = {
+  apolloClient: {
+    mocks: [
+      {
+        // ...
+        result: {
+          errors: [new GraphQLError("Error!")],
+        },
       },
     ],
   },
