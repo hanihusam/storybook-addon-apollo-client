@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { DisplayLocation, GET_LOCATION_QUERY } from "./DisplayLocation";
-import { GraphQLError } from "graphql";
 import { expect, fn, within } from "storybook/test";
 
 const meta: Meta<typeof DisplayLocation> = {
@@ -84,22 +83,22 @@ export const WithError: Story = {
               locationId: 1,
             },
           },
-          error: new GraphQLError("Could not get location"),
+          error: new Error("Could not get location"),
         },
       ],
     },
   },
 };
 
-export const WithVariableMatcher: Story = {
+export const WithDynamicVariable: Story = {
   parameters: {
     apolloClient: {
       mocks: [
         {
           request: {
             query: GET_LOCATION_QUERY,
+            variables: fn(() => true),
           },
-          variableMatcher: fn(() => true),
           result: {
             data: {
               location: {
@@ -130,6 +129,8 @@ export const WithVariableMatcher: Story = {
       // @ts-expect-error - storybook types are wrong
       canvas.getByText(mock.result.data.location.description),
     ).toBeInTheDocument();
-    await expect(mock.variableMatcher).toHaveBeenCalledWith({ locationId: 1 });
+    await expect(mock.request.variables).toHaveBeenCalledWith(
+      expect.objectContaining({ locationId: 1 }),
+    );
   },
 };
