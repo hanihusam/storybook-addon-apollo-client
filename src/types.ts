@@ -12,7 +12,6 @@ export interface ExtendedMockedRequest extends MockLink.MockedRequest {
 export interface ExtendedMockedResponse
   extends Omit<MockLink.MockedResponse, "request"> {
   request: ExtendedMockedRequest;
-  variableMatcher?: (variables: any) => boolean;
 }
 
 export type ApolloClientAddonState = {
@@ -27,7 +26,5 @@ export interface ApolloClientTypes {
 }
 
 export type ApolloClientParameters = Partial<
-  Omit<MockedProviderProps, "children" | "mocks"> & {
-    mocks?: ExtendedMockedResponse[];
-  }
+  Omit<MockedProviderProps, "children">
 >;
