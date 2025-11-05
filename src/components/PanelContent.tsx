@@ -1,15 +1,15 @@
 import React from "react";
 
+import type { MockedResponse } from "@apollo/client/testing";
 import {
   Placeholder,
   SyntaxHighlighter,
   TabsState,
 } from "storybook/internal/components";
 import { convert, themes } from "storybook/internal/theming";
-import { ExtendedMockedResponse } from "../types";
 
 interface PanelContentProps {
-  mock?: ExtendedMockedResponse;
+  mock?: MockedResponse;
   query?: string;
 }
 
