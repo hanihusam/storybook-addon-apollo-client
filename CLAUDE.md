@@ -79,10 +79,11 @@ Constants in `src/constants.ts`:
 
 **tsup** (`tsup.config.ts`):
 - Builds multiple entry points with different targets
-- Manager entries: ESM only, browser platform, externalizes Storybook manager globals
-- Preview entries: ESM + CJS, browser platform, externalizes Storybook preview globals
-- Export entries: ESM + CJS, dual browser/node target, generates TypeScript declarations
-- Uses Storybook's global packages lists for proper externalization
+- Manager entries: ESM only, esnext target, browser platform, code splitting enabled
+- Preview entries: ESM only, esnext target, browser platform, code splitting enabled, generates TypeScript declarations
+- Node entries: ESM only, Node 20.19+ target (if needed)
+- Externalizes: react, react-dom, @storybook/icons, and all Storybook internal packages
+- No longer uses global packages imports from Storybook (manual externals instead)
 
 ## Story Parameter Structure
 
@@ -120,7 +121,8 @@ export const MyStory: Story = {
 
 - Version 7.x: Apollo Client 2.x/3.x + Storybook 8.x
 - Version 8.x: Apollo Client 3.x + Storybook 8.3+
-- Current version (9.x): Storybook 9.x support
+- Version 9.x: Apollo Client 3.x + Storybook 9.x
+- Current version (10.x): Apollo Client 3.x + Storybook 10.x (requires Node 20.19+)
 
 Migration from 5.x-6.x to 7.x+ removed `globalMocks` in favor of mock composition at the story level.
 

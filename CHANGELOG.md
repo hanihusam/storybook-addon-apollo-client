@@ -1,3 +1,23 @@
+# v10.0.0 (TBD)
+
+#### 💥 Breaking Change
+
+- **Storybook 10 Support**: Updated to Storybook 10.x with ESM-only builds
+- **Node.js Requirement**: Requires Node 20.19 or later
+- **ESM-Only**: All builds are now ESM-only (no CommonJS)
+- **Module Resolution**: Updated TypeScript to use bundler module resolution
+- **Build Target**: Updated to esnext target with code splitting enabled
+
+#### 🔄 Migration Guide
+
+To migrate from v9.x to v10.x:
+1. Upgrade to Node 20.19 or later
+2. Upgrade Storybook to 10.x
+3. Update any CommonJS imports to ESM
+4. Run `npm install` to get the latest dependencies
+
+---
+
 # v9.0.0 (Tue Jun 24 2025)
 
 #### 💥 Breaking Change
