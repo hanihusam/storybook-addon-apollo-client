@@ -4,7 +4,7 @@ import type { OperationDefinitionNode } from "graphql";
 
 import { AddonPanel, Form } from "storybook/internal/components";
 import { STORY_CHANGED, STORY_RENDERED } from "storybook/internal/core-events";
-import { useAddonState, useChannel } from "storybook/internal/manager-api";
+import { useAddonState, useChannel } from "storybook/manager-api";
 import { Addon_RenderOptions } from "storybook/internal/types";
 
 import { PanelContent } from "./components/PanelContent";

@@ -1,4 +1,4 @@
-import { addons, types } from "storybook/internal/manager-api";
+import { addons, types } from "storybook/manager-api";
 import { ADDON_ID, PANEL_ID } from "./constants";
 import { Panel } from "./Panel";
 import { Title } from "./Title";
@@ -14,7 +14,7 @@ addons.register(ADDON_ID, () => {
   addons.add(PANEL_ID, {
     type: types.PANEL,
     title: Title,
-    match: ({ viewMode }) => viewMode === "story",
+    match: ({ viewMode }: { viewMode?: string }) => viewMode === "story",
     render: Panel,
   });
 });
